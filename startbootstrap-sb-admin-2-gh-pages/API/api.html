@@ -24,10 +24,19 @@
             // console.log(apiArr)
             const ulEle = document.querySelector('#showApi')
             let str = ''
-            for (let result of apiArr) {
-                console.log(result)
-                str += `<ul>출력 확인 : ${result.구분}</ul>`
-            }
+
+            for (const result of apiArr) {
+                let key = Object.keys(result)
+                let value = Object.values(result)
+                console.log(key)
+                // console.log('value입니다', value)
+
+                let sortKeys = Object.keys(result).filter(function (sort){return sort.indexOf('구분') >-1 })
+                console.log(sortKeys)
+
+            }//end for
+
+
             ulEle.innerHTML = str
         })
     })
