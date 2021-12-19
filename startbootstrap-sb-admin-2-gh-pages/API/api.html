@@ -24,9 +24,10 @@
             // console.log(apiArr)
             const ulEle = document.querySelector('#showApi')
             let str = ''
-            for (let i = 0; i < apiArr.length; i++) {
-                str += `<ul>출력 : ${apiArr[i]}</ul>`
-            }//end for
+            for (let result of apiArr) {
+                console.log(result)
+                str += `<ul>출력 확인 : ${result.구분}</ul>`
+            }
             ulEle.innerHTML = str
         })
     })
