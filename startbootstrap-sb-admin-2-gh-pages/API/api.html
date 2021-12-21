@@ -27,9 +27,12 @@
             console.log(apiArr)
             // let sortKeys = Object.keys(apiArr).filter(function (sort){return sort.indexOf('구분') >-1 })
             // console.log(sortKeys[0])
+            const value = Object.keys(apiArr)
+
             for (let i = 0; i < apiArr.length; i++) {
-                str += `<ul>출력확인 : ${apiArr[i].구분}</ul>`
-            }
+                str += `<ul>출력확인 : ${apiArr[i].구분}</ul>
+                        <div>수익률 : ${apiArr[i]["2017년 수익률"]}</div>`
+            }//end for
             ulEle.innerHTML = str
         })
     })
