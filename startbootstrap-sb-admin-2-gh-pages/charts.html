@@ -415,9 +415,6 @@
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
-                                    <button type="button">버튼</button>
                                 </div>
                             </div>
                         </div>
@@ -495,7 +492,7 @@
     $.getJSON('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D', function (source) {
         apiArr = source.data
         console.log(apiArr)
-        console.log(apiArr[0]["2017년 수익률"])
+        console.log(apiArr[0].구분)
         console.log("--------------")
 
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -507,7 +504,7 @@
             data: {
                 labels: ["Direct", "Referral", "Social"],
                 datasets: [{
-                    data: [apiArr[0]["2017년 수익률"], 0, 0],
+                    data: [apiArr[0].구분, 0, 0],
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
