@@ -490,8 +490,8 @@
             crossorigin="anonymous"></script>
 <script>
     function calculater(ratioPercent, profit) {
-        const toHundred = 100/ratioPercent
-        return profit*toHundred;
+        const toHundred = 100/parseFloat(ratioPercent)
+        return parseFloat(profit)*parseFloat(toHundred);
     }
 
 
@@ -500,12 +500,11 @@
         console.log(apiArr)
         console.log(apiArr[0].구분)
         console.log("--------------")
-        const result = (parseFloat(apiArr[2]["2017년 수익금(단위: 십억원)"]))
+        const result = apiArr[2]["2017년 수익금(단위: 십억원)"]
         console.log(typeof result)
         console.log(apiArr[2]["2017년 수익률"])
-        calculater(apiArr[2]["2017년 수익금(단위: 십억원)"], apiArr[2]["2017년 수익률"])
-        console.log(calculater())
-
+        const finance = calculater(apiArr[2]["2017년 수익률"], apiArr[2]["2017년 수익금(단위: 십억원)"])
+        console.log(finance)
 
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#858796';
@@ -517,7 +516,7 @@
                 labels: [apiArr[1].구분, apiArr[2].구분, apiArr[3].구분, apiArr[4].구분, apiArr[5].구분, apiArr[6].구분, apiArr[7].구분, apiArr[8].구분, apiArr
                 [9].구분] ,
                 datasets: [{
-                    data: [100, 0, 0],
+                    data: [finance, 0, 0],
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",

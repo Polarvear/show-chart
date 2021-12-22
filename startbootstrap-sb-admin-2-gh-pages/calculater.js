@@ -3,4 +3,4 @@ function calculater(ratioPercent, profit) {
     return profit*toHundred;
 }
 
-calculater(7.26, 41194)
+console.log(calculater(7.28, 41190))
