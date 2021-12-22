@@ -502,9 +502,10 @@
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ["Direct", "Referral", "Social"],
+                labels: [apiArr[1].구분, apiArr[2].구분, apiArr[3].구분, apiArr[4].구분, apiArr[5].구분, apiArr[6].구분, apiArr[7].구분, apiArr[8].구분, apiArr
+                [9].구분] ,
                 datasets: [{
-                    data: [apiArr[0].구분, 0, 0],
+                    data: [100, 0, 0],
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -530,26 +531,6 @@
         });
     })
 
-    //     let apiArr = []
-    //
-    //
-    //     $.getJSON('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D', function (source) {
-    //         apiArr = source.data
-    //         // console.log(apiArr)
-    //         const canvasEle = document.querySelector('#myPieChart')
-    //         let str = ''
-    //         console.log(apiArr)
-    //         // let sortKeys = Object.keys(apiArr).filter(function (sort){return sort.indexOf('구분') >-1 })
-    //         // console.log(sortKeys[0])
-    //         const value = Object.keys(apiArr)
-    //
-    //         for (let i = 0; i < apiArr.length; i++) {
-    //             str += `<div>출력확인 : ${apiArr[i].구분}</div>
-    //                     <div>수익률 : ${apiArr[i]["2017년 수익률"]}</div>`
-    //         }//end for
-    //         canvasEle.innerHTML = str
-    //     })
-    // }
 </script>
 </body>
 
