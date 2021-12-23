@@ -4,3 +4,4 @@ function calculater(ratioPercent, profit) {
 }
 
 console.log(calculater(7.28, 41190))
+

@@ -493,18 +493,18 @@
         const toHundred = 100/parseFloat(ratioPercent)
         return parseFloat(profit)*parseFloat(toHundred);
     }
+    function loadData() {
+        fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+            .then(response => response.json())
+            .then(data => {
+                const year = data.data // 출력확인
+                // console.log(year)
+                for (const detail of year) {
+                    console.log(detail.구분)
+                }
 
-
-    $.getJSON('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D', function (source) {
-        apiArr = source.data
-        console.log(apiArr)
-        console.log(apiArr[0].구분)
-        console.log("--------------")
-        const result = apiArr[2]["2017년 수익금(단위: 십억원)"]
-        console.log(typeof result)
-        console.log(apiArr[2]["2017년 수익률"])
-        const finance = calculater(apiArr[2]["2017년 수익률"], apiArr[2]["2017년 수익금(단위: 십억원)"])
-        console.log(finance)
+            })
+    }
 
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#858796';
@@ -513,10 +513,9 @@
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: [apiArr[1].구분, apiArr[2].구분, apiArr[3].구분, apiArr[4].구분, apiArr[5].구분, apiArr[6].구분, apiArr[7].구분, apiArr[8].구분, apiArr
-                [9].구분] ,
+                labels: [loadData()] ,
                 datasets: [{
-                    data: [finance, 0, 0],
+                    data: [30, 30, 30],
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -540,7 +539,6 @@
                 cutoutPercentage: 80,
             },
         });
-    })
 
 </script>
 </body>
