@@ -60,7 +60,7 @@
             .then(data => {
                 const year = data.data // 출력확인
                 console.log(year)
-                let result;
+                let result = 0;
                 for (const profit of year) {
                  result += (parseFloat(profit["2017년 수익금(단위: 십억원)"]))
                  console.log(result)
