@@ -495,7 +495,11 @@
     }
 
 const arr = ['하이요', '안녕하세요', '오호라 '];
-const arr2 = [2,3,4,5,6,7,8,9]
+    function showArray() {
+        const arr0 = [1,2,3]
+        return arr0
+    }
+
 
     function loadData(){
         fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
@@ -518,9 +522,9 @@ const arr2 = [2,3,4,5,6,7,8,9]
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: console.log(loadData()) ,
+                labels: console.log(showArray()) ,
                 datasets: [{
-                    data: arr2,
+                    data: [10,9,7],
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
