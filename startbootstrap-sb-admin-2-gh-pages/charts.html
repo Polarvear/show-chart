@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -494,27 +494,15 @@
         return parseFloat(profit)*parseFloat(toHundred);
     }
 
-const arr = ['하이요', '안녕하세요', '오호라 '];
-    function showArray() {
-        const arr0 = [1,2,3]
-        return arr0
-    }
+    fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+        .then(response => response.json())
+        .then(data => {
+            const profit = []
+            const year = data.data // 출력확인
+            year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
+            console.log(profit)
+        }) // 맵으로 편안하게 돌릴 수 있는 거 확인
 
-
-    function loadData(){
-        fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
-            .then(response => response.json())
-            .then(data => {
-                const year = data.data // 출력확인
-                // console.log(year)
-                const apiArr = []
-                for (const i in year) {
-                    apiArr.push(year[i].구분)
-
-                }
-                console.log(apiArr)
-            })
-    }
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#858796';
         // Pie Chart Example
@@ -522,7 +510,7 @@ const arr = ['하이요', '안녕하세요', '오호라 '];
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: console.log(showArray()) ,
+                labels: [] ,
                 datasets: [{
                     data: [10,9,7],
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
@@ -548,6 +536,7 @@ const arr = ['하이요', '안녕하세요', '오호라 '];
                 cutoutPercentage: 80,
             },
         });
+
 
 </script>
 </body>

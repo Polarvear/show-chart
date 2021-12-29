@@ -19,4 +19,13 @@ function monenytoPercent(data1, data2, data3, data4) {
 }
 monenytoPercent(20,20, 20, 20)
 
+fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+    .then(response => response.json())
+    .then(data => {
+        const profit = []
+        const year = data.data // 출력확인
+        year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
+        console.log(profit)
+    })
+
 // prarameter 값에 맞지않게 argument를 넘겨버리면 에러가 발생하는 걸 알게 되었다

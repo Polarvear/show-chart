@@ -77,11 +77,11 @@
             })
         // return result; 여기 ㅓㄶ으면 무한 루프 비슷하게 걸림ㅁ
     }
-sumMoney()
+// sumMoney()
 
     function showArray() {
         const arr = [1,2,3]
-        return arr
+        return arr;
     }
 console.log(showArray())
 
@@ -91,7 +91,10 @@ console.log(showArray())
             const profit = []
             const year = data.data // 출력확인
             year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
-            console.log(profit)})
+            return profit;
+            })
+
+
 
 </script>
 </body>
