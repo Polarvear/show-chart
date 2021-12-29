@@ -26,6 +26,10 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
         const year = data.data // 출력확인
         year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
         console.log(profit)
+        for (let i = 0; i < profit.length; i++) {
+            console.log(profit[0])
+
+        }
     })
 
 // prarameter 값에 맞지않게 argument를 넘겨버리면 에러가 발생하는 걸 알게 되었다
