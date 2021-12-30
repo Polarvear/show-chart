@@ -1,4 +1,15 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
+const profit = []
+fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+    .then(response => response.json())
+    .then(data => {
+      const year = data.data // 출력확인
+      console.log(year)
+      year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
+      profit.splice(0,1)
+    })
+
+console.log(profit)
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -38,7 +49,7 @@ var myBarChart = new Chart(ctx, {
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: profit,
     }],
   },
   options: {
@@ -67,7 +78,7 @@ var myBarChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: 0,
+          min: -50,
           max: 15000,
           maxTicksLimit: 5,
           padding: 10,
