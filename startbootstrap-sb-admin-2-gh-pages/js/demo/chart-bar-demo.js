@@ -1,15 +1,19 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 const profit = []
+const sort = []
 fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
     .then(response => response.json())
     .then(data => {
       const year = data.data // 출력확인
       console.log(year)
       year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
+      year.map(m => sort.push(m["구분"]))
+      sort.splice(0,1)
       profit.splice(0,1)
     })
 
 console.log(profit)
+console.log(sort)
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -43,9 +47,9 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: sort,
     datasets: [{
-      label: "Revenue",
+      label: "수익금 단위(십억원)",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
@@ -59,7 +63,7 @@ var myBarChart = new Chart(ctx, {
         left: 10,
         right: 25,
         top: 25,
-        bottom: 0
+        bottom: 25,
       }
     },
     scales: {
@@ -79,12 +83,12 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: -50,
-          max: 15000,
+          max: 1500,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '₩' + number_format(value);
           }
         },
         gridLines: {
@@ -114,7 +118,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ₩' + number_format(tooltipItem.yLabel);
         }
       }
     },
