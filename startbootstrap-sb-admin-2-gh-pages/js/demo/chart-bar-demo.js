@@ -79,14 +79,14 @@ var myBarChart = new Chart(ctx, {
         ticks: {
           maxTicksLimit: 6
         },
-        maxBarThickness: 25,
+        maxBarThickness: 20,
       }],
       yAxes: [{
         ticks: {
           min: -50,
           max: 1500,
           maxTicksLimit: 50,
-          padding: 10,
+          padding: 5,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
             return '₩' + number_format(value);
