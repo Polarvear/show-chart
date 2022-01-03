@@ -70,7 +70,7 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'price'
         },
         gridLines: {
           display: false,
