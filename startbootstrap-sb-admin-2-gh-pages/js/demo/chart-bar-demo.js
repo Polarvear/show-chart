@@ -54,7 +54,7 @@ var myBarChart = new Chart(ctx, {
   data: {
     labels: sort,
     datasets: [{
-      label: "수익률(%)",
+      label: "수익률",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
@@ -65,7 +65,7 @@ var myBarChart = new Chart(ctx, {
     maintainAspectRatio: false,
     layout: {
       padding: {
-        left: 10,
+        left: 25,
         right: 25,
         top: 25,
         bottom: 25,
@@ -93,7 +93,7 @@ var myBarChart = new Chart(ctx, {
           padding: 5,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '%' + number_format(value);
+            return number_format(value) + '%' ;
           }
         },
         gridLines: {
@@ -123,7 +123,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': %' + number_format(tooltipItem.yLabel);
+          return  datasetLabel + number_format(tooltipItem.yLabel) + '%';
         }
       }
     },
