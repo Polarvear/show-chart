@@ -1,20 +1,24 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-const profit = []
+const profitPercent = []
 const sort = []
+const profitMoney = []
 
 fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
     .then(response => response.json())
     .then(data => {
       const year = data.data // 출력확인
-      console.log(year)
-      year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
+      // console.log(year)
+      year.map(m => profitPercent.push(m["2017년 수익률"]))
       year.map(m => sort.push(m["구분"]))
+      year.map(m => profitMoney.push(m["2017년 수익금(단위: 십억원)"]))
       sort.splice(0,1)
-      profit.splice(0,1)
+      profitPercent.splice(0,1)
+      profitMoney.splice(0,1)
     })
 
-console.log(profit)
+console.log(profitPercent)
 console.log(sort)
+console.log(profitMoney)
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -50,11 +54,11 @@ var myBarChart = new Chart(ctx, {
   data: {
     labels: sort,
     datasets: [{
-      label: "수익금 단위(십억원)",
+      label: "수익률(%)",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: profit,
+      data: profitPercent,
     }],
   },
   options: {
@@ -77,19 +81,19 @@ var myBarChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: sort.length
         },
-        maxBarThickness: 20,
+        maxBarThickness: 50,
       }],
       yAxes: [{
         ticks: {
-          min: -50,
-          max: 1500,
-          maxTicksLimit: 50,
+          min: -10,
+          max: 30,
+          maxTicksLimit: 5,
           padding: 5,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '₩' + number_format(value);
+            return '%' + number_format(value);
           }
         },
         gridLines: {
@@ -105,13 +109,13 @@ var myBarChart = new Chart(ctx, {
       display: false
     },
     tooltips: {
-      titleMarginBottom: 10,
+      titleMarginBottom: 5,
       titleFontColor: '#6e707e',
       titleFontSize: 14,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
-      borderWidth: 1,
+      borderWidth: 5,
       xPadding: 15,
       yPadding: 15,
       displayColors: false,
@@ -119,7 +123,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': ₩' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': %' + number_format(tooltipItem.yLabel);
         }
       }
     },
