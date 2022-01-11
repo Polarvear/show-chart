@@ -79,21 +79,72 @@
     }
 // sumMoney()
 
+    // const profit1 = []
+    // let total = []
+    // fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         const year = data.data // 출력확인
+    //         year.map(m => profit1.push(m["2017년 수익금(단위: 십억원)"]))
+    //         profit1.splice(0,1)
+    //         console.log(profit1)
+    //         total = profit1.split(",")
+    //         console.log(total)
+    //         })
+
+const array1 = [1,2,4]
+const array2 = [2,3,4]
+const array3 = []
+    const Cal = () => {
+        for (let i = 0; i < array1.length; i++) {
+            let result = array1[i] + array2[i]
+            array3.push(result)
+        }
+        console.log(array3)
+    }
+Cal()
+
     const profit = []
-    let total = []
+    let profitPercent = []
     fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
         .then(response => response.json())
         .then(data => {
             const year = data.data // 출력확인
+            console.log(year)
             year.map(m => profit.push(m["2017년 수익금(단위: 십억원)"]))
+            year.map(m => profitPercent.push(m["2017년 수익률"]))
             profit.splice(0,1)
-            console.log(profit)
-            total = profit.split(",")
-            console.log(total)
+            profitPercent.splice(0,1)
+            console.log(profitPercent)
+            const toNumbers = arr => arr.map(Number);
+            const profitToNum = toNumbers(profit)
+            const percentToNum = toNumbers(profitPercent)
+            const result = []
+            console.log(profitToNum) // 숫자로 변환 완료
+            console.log(percentToNum) // 퍼센트도 변환 완료
+            function makeResult(arr1, arr2) {
+                for (let i = 0; i < profitToNum; i++) {
+                    let preResult = profitToNum[i]*(100/profitPercent[i])
+                    result.push(preResult)
+                }
+                console.log(result)
+            }
 
-            })
+            console.log(makeResult(profitToNum, percentToNum))
 
-
+            // const one = profitToNum[0]*(100/profitPercent[0])
+            // const two = profitToNum[1]*(100/profitPercent[1])
+            // const three = profitToNum[2]*(100/profitPercent[2])
+            // const four = profitToNum[3]*(100/profitPercent[3])
+            // const five = profitToNum[4]*(100/profitPercent[4])
+            // const six = profitToNum[5]*(100/profitPercent[5])
+            // const seven = profitToNum[6]*(100/profitPercent[6])
+            // const eight = profitToNum[7]*(100/profitPercent[7])
+            // const nine = profitToNum[8]*(100/profitPercent[8])
+            // result.push(parseInt(one), parseInt(two), parseInt(three), parseInt(four), parseInt(five), parseInt(six), parseInt(seven), parseInt(eight), parseInt(nine))console.log(result)
+            const reducer = (previousValue, currentValue) => previousValue + currentValue;
+            console.log(profitToNum.reduce(reducer));
+        })
 
 
 
