@@ -17,7 +17,6 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
       sort.splice(0,1)
       profitPercent.splice(0,1)
       profitMoney.splice(0,1)
-
       var ctx = document.getElementById("myBarChart");
       var myBarChart = new Chart(ctx, {
         type: 'bar',
