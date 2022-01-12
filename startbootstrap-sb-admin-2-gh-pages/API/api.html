@@ -107,6 +107,7 @@
 console.log("-------------------------")
     const profit = []
     let profitPercent = []
+    const result = []
     fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
         .then(response => response.json())
         .then(data => {
@@ -116,26 +117,20 @@ console.log("-------------------------")
             year.map(m => profitPercent.push(m["2017년 수익률"]))
             profit.splice(0, 1)
             profitPercent.splice(0, 1)
-            console.log(profitPercent)
             const toNumbers = arr => arr.map(Number);
             const profitToNum = toNumbers(profit)
             const percentToNum = toNumbers(profitPercent)
-            console.log(profitToNum) // 숫자로 변환 완료
-            console.log(percentToNum) // 퍼센트도 변환 완료
             function makeResult(profitToNum, percentToNum) {
-                const result = []
                 for (let i = 0; i < profitToNum.length; i++) {
                     let preResult = profitToNum[i] * (100 / percentToNum[i])
-                    result.push(preResult)
+                    result.push(parseInt(preResult))
                 }
                 console.log(result)
-                const total = toNumbers(result)
-                console.log(total)
             }
             makeResult(profitToNum, percentToNum)
         })
 
-
+console.log(result)
 
 
 </script>
