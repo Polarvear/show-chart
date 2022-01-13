@@ -38,6 +38,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                 labels: sort,
                 datasets: [{
                     data: result,
+                    label: "투자 원금",
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc','#4e73df', '#1cc88a', '#36b9cc','#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#2e59d9', '#17a673', '#2c9faf','#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -57,7 +58,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return  datasetLabel + number_format(tooltipItem.yLabel) + '%';
+                            return  datasetLabel + number_format1(result) + '₩';
                         }
                     }
                 },
@@ -68,6 +69,15 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
             },
         });
     })
+function number_format1(arr) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let preResult = arr[i]
+        result.push(preResult)
+    }
+    return result
+}
+
 function number_format(number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(',', '').replace(' ', '');
     var n = !isFinite(+number) ? 0 : +number,
