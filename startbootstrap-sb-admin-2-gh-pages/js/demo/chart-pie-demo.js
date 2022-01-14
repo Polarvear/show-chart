@@ -22,9 +22,10 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
         const toNumbers = arr => arr.map(Number);
         const profitToNum = toNumbers(profit)
         const percentToNum = toNumbers(profitPercent)
+        const oneHundered = 100
         function makeResult(profitToNum, percentToNum) {
             for (let i = 0; i < profitToNum.length; i++) {
-                let preResult = profitToNum[i] * (100 / percentToNum[i])
+                let preResult = profitToNum[i] * (oneHundered / percentToNum[i])
                 result.push(parseInt(preResult))
             }
             console.log(result)
@@ -70,12 +71,10 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
         });
     })
 function number_format1(arr) {
-    let result = []
     for (let i = 0; i < arr.length; i++) {
         let preResult = arr[i]
-        result.push(preResult)
+        return preResult
     }
-    return result
 }
 
 function number_format(number, decimals, dec_point, thousands_sep) {
