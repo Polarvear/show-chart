@@ -23,14 +23,14 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
         const profitToNum = toNumbers(profit)
         const percentToNum = toNumbers(profitPercent)
         const oneHundered = 100
-        function makeResult(profitToNum, percentToNum) {
+        function makePrincipal(profitToNum, percentToNum) {
             for (let i = 0; i < profitToNum.length; i++) {
                 let preResult = profitToNum[i] * (oneHundered / percentToNum[i])
                 result.push(parseInt(preResult))
             }
             console.log(result)
         }
-        makeResult(profitToNum, percentToNum)
+        makePrincipal(profitToNum, percentToNum)
 
         var ctx = document.getElementById("myPieChart");
         var myPieChart = new Chart(ctx, {
@@ -39,7 +39,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                 labels: sort,
                 datasets: [{
                     data: result,
-                    label: "투자 원금",
+                    label: "투자원금(단위: 십억원)",
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc','#4e73df', '#1cc88a', '#36b9cc','#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#2e59d9', '#17a673', '#2c9faf','#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
