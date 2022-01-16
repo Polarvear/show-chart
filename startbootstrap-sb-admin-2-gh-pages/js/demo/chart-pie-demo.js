@@ -59,7 +59,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return  datasetLabel + number_format1(result) + '₩';
+                            return  datasetLabel + number_format(result) + '₩';
                         }
                     }
                 },
@@ -71,9 +71,9 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
         });
     })
 function number_format1(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let preResult = arr[i]
-        return preResult
+    for (const arr2Element of arr) {
+        console.log(arr2Element)
+            return arr2Element
     }
 }
 
