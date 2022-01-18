@@ -42,7 +42,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                     label: "투자원금(단위: 십억원)",
                     backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc','#4e73df', '#1cc88a', '#36b9cc','#4e73df', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#2e59d9', '#17a673', '#2c9faf','#2e59d9', '#17a673', '#2c9faf'],
-                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                    hoverBorderColor: "rgba(234, 236, 244)",
                 }],
             },
             options: {
@@ -64,7 +64,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                     }
                 },
                 legend: {
-                    display: false
+                    display: true
                 },
                 cutoutPercentage: 80,
             },
