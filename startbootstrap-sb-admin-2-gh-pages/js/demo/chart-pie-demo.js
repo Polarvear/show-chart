@@ -54,7 +54,7 @@ fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614
                     borderWidth: 1,
                     xPadding: 15,
                     yPadding: 15,
-                    displayColors: false,
+                    displayColors: true,
                     caretPadding: 10,
                     callbacks: {
                         label: function(tooltipItem, chart) {
@@ -78,6 +78,8 @@ function number_format1(arr) {
         return arr2
     }
 }
+
+number_format1(arr).isPrototypeOf(Object)
 
 function number_format(number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(',', '').replace(' ', '');
