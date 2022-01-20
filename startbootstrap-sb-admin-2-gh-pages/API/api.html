@@ -131,12 +131,13 @@ console.log("-------------------------")
 //         })
 //
 // console.log(result)
-    fetch("Kospi/코스피지수 내역2017.csv")
-        .then(response => response.text())
-        .then(text => {
-            console.log(text)
-            for (let i = 0; i < text.length; i++) {
-             console.log(text[i])
+    fetch("Kospi/2017Kospi.json")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            for (let i = 0; i < data.length; i++) {
+                const result = data[i]
+                console.log(result.종가)
             }
         });
 
