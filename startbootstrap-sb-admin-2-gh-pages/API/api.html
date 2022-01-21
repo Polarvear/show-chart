@@ -36,47 +36,47 @@
     //         ulEle.innerHTML = str
     //     })
     // })
-
-    function loadData(){
-        fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
-            .then(response => response.json())
-            .then(data => {
-                const year = data.data // 출력확인
-                console.log(year)
-                const apiArr = []
-                const show = document.querySelector('#showApi')
-                for (const i in year) {
-                    apiArr.push(year[i].구분)
-
-                }
-                show.innerHTML = apiArr
-            })
-    }
-    // loadData()
-
-
-
-    function sumMoney(){
-        fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
-            .then(response => response.json())
-            .then(data => {
-                const list = []
-                const year = data.data // 출력확인
-                year.map(m => list.push(m.구분))
-                console.log(list)
-                console.log(year)
-                const perProfit = []
-                let result = 0;
-                for (const profit of year) {
-                 // console.log(profit)
-                 perProfit.push(profit)
-                 console.log(perProfit)
-                 result += (parseFloat(profit["2017년 수익금(단위: 십억원)"]))
-                }
-
-            })
-        // return result; 여기 ㅓㄶ으면 무한 루프 비슷하게 걸림ㅁ
-    }
+    //
+    // function loadData(){
+    //     fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             const year = data.data // 출력확인
+    //             console.log(year)
+    //             const apiArr = []
+    //             const show = document.querySelector('#showApi')
+    //             for (const i in year) {
+    //                 apiArr.push(year[i].구분)
+    //
+    //             }
+    //             show.innerHTML = apiArr
+    //         })
+    // }
+    // // loadData()
+    //
+    //
+    //
+    // function sumMoney(){
+    //     fetch('https://api.odcloud.kr/api/15071595/v1/uddi:262b7fb0-1f5e-40cd-8f14-b0614b4dc997?page=1&perPage=10&serviceKey=Fs0FMSahbQEYkW4qd0bKDnX6ualVgtwD6luFAYuMaOG8c4P%2B%2Bhsjn%2BMh2qNQZoG9AFPrTvZFq%2FJ013lo8dUBWA%3D%3D')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             const list = []
+    //             const year = data.data // 출력확인
+    //             year.map(m => list.push(m.구분))
+    //             console.log(list)
+    //             console.log(year)
+    //             const perProfit = []
+    //             let result = 0;
+    //             for (const profit of year) {
+    //              // console.log(profit)
+    //              perProfit.push(profit)
+    //              console.log(perProfit)
+    //              result += (parseFloat(profit["2017년 수익금(단위: 십억원)"]))
+    //             }
+    //
+    //         })
+    //     // return result; 여기 ㅓㄶ으면 무한 루프 비슷하게 걸림ㅁ
+    // }
 // sumMoney()
 
     // const profit = []
@@ -131,26 +131,43 @@ console.log("-------------------------")
 //         })
 //
 // console.log(result)
-    const endPrice = []
-    const preResult = []
+    const preEndPrice = []
     fetch("Kospi/2017Kospi.json")
         .then(response => response.json())
         .then(data => {
             //console.log(data) // 이거 배열이 이상하게 생김
-            data.map(m => endPrice.push(m["종가"]))
+            data.map(m => preEndPrice.push(m["종가"]))
+            //console.log("종가데이터", preEndPrice)
+            //console.log("나눠진 첫번째 배열에 접근", preEndPrice[0])
+            const arr1 = []
+            arr1.push(preEndPrice[0])
+            console.log("arr1데이터입니다", arr1)
+            const endPrice  = [
+                ...preEndPrice[0],
+                ...preEndPrice[1],
+                ...preEndPrice[2]
+            ]
+            //console.log("endPrice출력입니다", endPrice)
 
-            for (let i = 0; i < 5; i++) {
-                console.log("for:::",endPrice[i]) // 이렇게는 접근가
+            // const toNumbers = preEndPrice => preEndPrice.map(Number);
+            // const toNum = toNumbers(preEndPrice)
+            for(let i=0; i < 5; i++){
+               let ll =  preEndPrice[0].replace("," , "")
+              let num = parseFloat(ll)
+                console.log("toNum데이터입니다.",num )
             }
 
+            console.log("toNum데이터입니다.", toNum)
+            //console.log("reverse시킴", endPrice.reverse());
 
 
-            console.log("reverse시킴", endPrice.reverse());
+            // const toNumbers = arr => arr.map(Number);
+            // const priceToNum = toNumbers(endPrice)
+            // console.log(priceToNum)
             //preResult.push(result)  // 이거 가능??;;
 
-            console.log("endPrice 출력", endPrice)
+            //console.log("endPrice 출력", endPrice) // 성공
         });
-    console.log(preResult) // 안나옴
   // console.log(endPrice) // 이거 출력 성공
 </script>
 </body>
