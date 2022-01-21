@@ -131,15 +131,22 @@ console.log("-------------------------")
 //         })
 //
 // console.log(result)
+    const endPrice = []
+    const preResult = []
     fetch("Kospi/2017Kospi.json")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            for (let i = 0; i < data.length; i++) {
-                const result = data[i]
-                console.log(result.종가)
+            //console.log(data) // 이거 배열이 이상하게 생김
+            data.map(m => endPrice.push(m["종가"]))
+
+            for (let i = 0; i < 5; i++) {
+                console.log("for:::",endPrice[i]) // 이렇게는 접근가
             }
+            console.log("enPR::::", endPrice.reverse());
+            //preResult.push(result)  // 이거 가능??;;
         });
+    console.log(preResult) // 안나옴
+//console.log(endPrice) // 안나옴
 
 </script>
 </body>
