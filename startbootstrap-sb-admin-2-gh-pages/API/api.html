@@ -131,33 +131,62 @@ console.log("-------------------------")
 //         })
 //
 // console.log(result)
+// <<<<<<< Updated upstream
     const preEndPrice = []
+    const endPrice = []
     fetch("Kospi/2017Kospi.json")
         .then(response => response.json())
         .then(data => {
             //console.log(data) // 이거 배열이 이상하게 생김
             data.map(m => preEndPrice.push(m["종가"]))
+            //console.log(preEndPrice)
+            console.log(preEndPrice.length)
+            preEndPrice.splice(preEndPrice.length, 243, ",")
+            console.log(preEndPrice)
+
+            // var payment_dt_arr = preEndPrice // 이거 신기하긴한데 하나의 문자열로 나와버림
+            // payment_dt_arr.splice(payment_dt_arr.length,1,$(this).parent().siblings(".PAYMENT_DT").children().val());
+            // console.log(String(payment_dt_arr).replace(/\,/g, ''))
+
             //console.log("종가데이터", preEndPrice)
             //console.log("나눠진 첫번째 배열에 접근", preEndPrice[0])
-            const arr1 = []
-            arr1.push(preEndPrice[0])
-            console.log("arr1데이터입니다", arr1)
-            const endPrice  = [
-                ...preEndPrice[0],
-                ...preEndPrice[1],
-                ...preEndPrice[2]
-            ]
+            // const arr1 = []
+            // arr1.push(preEndPrice[0])
+            // console.log("arr1데이터입니다", arr1)
+            // const endPrice  = [
+            //     ...preEndPrice[0],
+            //     ...preEndPrice[1],
+            //     ...preEndPrice[2]
+            // ]
             //console.log("endPrice출력입니다", endPrice)
 
             // const toNumbers = preEndPrice => preEndPrice.map(Number);
             // const toNum = toNumbers(preEndPrice)
-            for(let i=0; i < 5; i++){
-               let ll =  preEndPrice[0].replace("," , "")
-              let num = parseFloat(ll)
-                console.log("toNum데이터입니다.",num )
-            }
+            // for(let i=0; i < 5; i++){
+            //    let ll =  preEndPrice[0].replace("," , "")
+            //   let num = parseFloat(ll)
+            //     console.log("toNum데이터입니다.",num )
+            // }
+// =======
+//
+//     const preResult = []
+//     const endPrice = []
+//     fetch("Kospi/2017Kospi.json")
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log("data입니다", data)
+//             for (let i = 0; i < data.length; i++) {
+//                 const result = data[i]
+//                 preResult.push(result)
+//
+//             }
+//         });
+//     console.log(preResult)
+//     preResult.map(m => endPrice.push(m["종가"]))
+//     console.log(endPrice)
+// >>>>>>> Stashed changes
 
-            console.log("toNum데이터입니다.", toNum)
+            //console.log("toNum데이터입니다.", toNum)
             //console.log("reverse시킴", endPrice.reverse());
 
 
