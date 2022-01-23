@@ -142,7 +142,18 @@ console.log("-------------------------")
             //console.log(preEndPrice)
             console.log(preEndPrice.length)
             preEndPrice.splice(preEndPrice.length, 243, ",")
-            console.log(preEndPrice)
+            let array = {}
+            for (let i = 0; i < preEndPrice.length; i++) {
+                array = {}
+                array = Number(preEndPrice[i].replace(",", ""))
+                endPrice.push(array)
+            }
+        })
+            //console.log(endPrice)
+
+            // const a = preEndPrice.map(function(item) { return item == "2,467.49" ? "50" : item; });
+            // console.log(a)
+           //preEndPrice.forEach(function(item, i) { if (item == 3452) a[i] = 1010; });
 
             // var payment_dt_arr = preEndPrice // 이거 신기하긴한데 하나의 문자열로 나와버림
             // payment_dt_arr.splice(payment_dt_arr.length,1,$(this).parent().siblings(".PAYMENT_DT").children().val());
@@ -159,14 +170,8 @@ console.log("-------------------------")
             //     ...preEndPrice[2]
             // ]
             //console.log("endPrice출력입니다", endPrice)
-
             // const toNumbers = preEndPrice => preEndPrice.map(Number);
             // const toNum = toNumbers(preEndPrice)
-            // for(let i=0; i < 5; i++){
-            //    let ll =  preEndPrice[0].replace("," , "")
-            //   let num = parseFloat(ll)
-            //     console.log("toNum데이터입니다.",num )
-            // }
 // =======
 //
 //     const preResult = []
@@ -196,7 +201,7 @@ console.log("-------------------------")
             //preResult.push(result)  // 이거 가능??;;
 
             //console.log("endPrice 출력", endPrice) // 성공
-        });
+       // });
   // console.log(endPrice) // 이거 출력 성공
 </script>
 </body>
