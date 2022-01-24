@@ -28,14 +28,14 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 const preEndPrice = []
 const endPrice = []
-let resultEndPrice = []
+let month = []
 fetch("API/Kospi/2017Kospi.json")
     .then(response => response.json())
     .then(data => {
       //console.log(data) // 이거 배열이 이상하게 생김
       data.map(m => preEndPrice.push(m["종가"]))
       //console.log(preEndPrice)
-      console.log(preEndPrice.length)
+      //console.log(preEndPrice.length)
       //preEndPrice.splice(preEndPrice.length, preEndPrice.length, ",") // 이렇게 하면 y 축 틀이 1000,2000, 3000으로 뜸
       let array = {}
       for (let i = 0; i < preEndPrice.length; i++) {
@@ -51,7 +51,7 @@ fetch("API/Kospi/2017Kospi.json")
         data: {
           labels: endPrice,
           datasets: [{
-            label: "Earnings",
+            label: "코스피 종가",
             lineTension: 0.3,
             backgroundColor: "rgba(78, 115, 223, 0.05)",
             borderColor: "rgba(78, 115, 223, 1)",
@@ -86,7 +86,7 @@ fetch("API/Kospi/2017Kospi.json")
                 drawBorder: false
               },
               ticks: {
-                maxTicksLimit: 7
+                maxTicksLimit: 12
               }
             }],
             yAxes: [{
@@ -95,7 +95,7 @@ fetch("API/Kospi/2017Kospi.json")
                 padding: 10,
                 // Include a dollar sign in the ticks
                 callback: function(value, index, values) {
-                  return '$' + number_format(value);
+                  return '' + number_format(value);
                 }
               },
               gridLines: {
@@ -127,7 +127,7 @@ fetch("API/Kospi/2017Kospi.json")
             callbacks: {
               label: function(tooltipItem, chart) {
                 var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
               }
             }
           }

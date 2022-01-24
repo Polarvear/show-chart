@@ -137,11 +137,11 @@ console.log("-------------------------")
     fetch("Kospi/2017Kospi.json")
         .then(response => response.json())
         .then(data => {
-            //console.log(data) // 이거 배열이 이상하게 생김
+            console.log(data) // 이거 배열이 이상하게 생김
             data.map(m => preEndPrice.push(m["종가"]))
             //console.log(preEndPrice)
-            console.log(preEndPrice.length)
-            preEndPrice.splice(preEndPrice.length, 243, ",")
+            //console.log(preEndPrice.length)
+            //preEndPrice.splice(preEndPrice.length, 243, ",")
             let array = {}
             for (let i = 0; i < preEndPrice.length; i++) {
                 array = {}
@@ -149,7 +149,7 @@ console.log("-------------------------")
                 endPrice.push(array)
             }
         })
-            //console.log(endPrice)
+            console.log(endPrice)
 
             // const a = preEndPrice.map(function(item) { return item == "2,467.49" ? "50" : item; });
             // console.log(a)
