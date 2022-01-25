@@ -42,14 +42,14 @@ fetch("API/Kospi/2017Kospi.json")
         array = {}
         array = Number(preEndPrice[i].replace(",", ""))
         endPrice.push(array)
-        endPrice.reverse() // 참조를 바꿔버림 굿굿
       }
+      endPrice.reverse() // 참조를 바꿔버림 굿굿
       console.log(endPrice)
       var ctx = document.getElementById("myAreaChart");
       var myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: endPrice,
+          labels: endPrice.reverse(),
           datasets: [{
             label: "코스피 종가",
             lineTension: 0.3,
@@ -63,7 +63,7 @@ fetch("API/Kospi/2017Kospi.json")
             pointHoverBorderColor: "rgba(78, 115, 223, 1)",
             pointHitRadius: 10,
             pointBorderWidth: 2,
-            data: endPrice,
+            data: endPrice.reverse(),
           }],
         },
         options: {
