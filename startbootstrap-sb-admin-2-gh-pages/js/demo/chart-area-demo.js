@@ -29,6 +29,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 const preEndPrice = []
 const endPrice = []
 let month = []
+const calendar = []
 fetch("API/Kospi/2017Kospi.json")
     .then(response => response.json())
     .then(data => {
@@ -43,13 +44,33 @@ fetch("API/Kospi/2017Kospi.json")
         array = Number(preEndPrice[i].replace(",", ""))
         endPrice.push(array)
       }
+      calendar.push(...endPrice)
+      calendar.splice(0, 1, "1월")
+      calendar.splice(21,1,"2월")
+      calendar.splice(42,1,"3월")
+      calendar.splice(63,1,"4월")
+      calendar.splice(63,1,"4월")
+      calendar.splice(84,1,"5월")
+      calendar.splice(105,1,"6월")
+      calendar.splice(126,1,"7월")
+      calendar.splice(147,1,"8월")
+      calendar.splice(168,1,"9월")
+      calendar.splice(189,1,"10월")
+      calendar.splice(210,1,"11월")
+      calendar.splice(231,1,"12월")
+
+      console.log(calendar.indexOf(2071.87))
+      console.log("cal info", calendar)
+
+
+
       endPrice.reverse() // 참조를 바꿔버림 굿굿
       console.log(endPrice)
       var ctx = document.getElementById("myAreaChart");
       var myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: endPrice.reverse(),
+          labels: calendar,
           datasets: [{
             label: "코스피 종가",
             lineTension: 0.3,
@@ -63,7 +84,7 @@ fetch("API/Kospi/2017Kospi.json")
             pointHoverBorderColor: "rgba(78, 115, 223, 1)",
             pointHitRadius: 10,
             pointBorderWidth: 2,
-            data: endPrice.reverse(),
+            data: endPrice,
           }],
         },
         options: {
