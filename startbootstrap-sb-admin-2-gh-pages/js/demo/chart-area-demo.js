@@ -30,11 +30,15 @@ const preEndPrice = []
 const endPrice = []
 let month = []
 const calendar = []
+const date = []
 fetch("API/Kospi/2017Kospi.json")
     .then(response => response.json())
     .then(data => {
-      //console.log(data) // 이거 배열이 이상하게 생김
+      //console.log(data) // 이거 배열이 이상하게 생
       data.map(m => preEndPrice.push(m["종가"]))
+      data.map(m => date.push(m["날짜"]))
+      date.reverse()
+
       //console.log(preEndPrice)
       //console.log(preEndPrice.length)
       //preEndPrice.splice(preEndPrice.length, preEndPrice.length, ",") // 이렇게 하면 y 축 틀이 1000,2000, 3000으로 뜸
@@ -70,7 +74,7 @@ fetch("API/Kospi/2017Kospi.json")
       var myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: calendar,
+          labels: date,
           datasets: [{
             label: "코스피 종가",
             lineTension: 0.3,
