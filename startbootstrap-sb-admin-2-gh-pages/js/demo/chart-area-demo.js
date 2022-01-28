@@ -72,9 +72,9 @@ fetch("API/Kospi/2017Kospi.json")
       console.log(endPrice)
       var ctx = document.getElementById("myAreaChart");
       var myLineChart = new Chart(ctx, {
-        type: 'line',
+        type : 'line',
         data: {
-          labels: date,
+          labels: calendar,
           datasets: [{
             label: "코스피 종가",
             lineTension: 0.3,
@@ -116,7 +116,7 @@ fetch("API/Kospi/2017Kospi.json")
             }],
             yAxes: [{
               ticks: {
-                maxTicksLimit: 5,
+                maxTicksLimit: 6,
                 padding: 10,
                 // Include a dollar sign in the ticks
                 callback: function(value, index, values) {
@@ -146,15 +146,15 @@ fetch("API/Kospi/2017Kospi.json")
             xPadding: 15,
             yPadding: 15,
             displayColors: false,
-            intersect: false,
+            intersect: true,
             mode: 'index',
             caretPadding: 10,
-            callbacks: {
-              label: function(tooltipItem, chart) {
-                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
-              }
-            }
+            //callbacks: {
+              //label: function(tooltipItem, chart) {
+                //var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                //return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+              //}
+            //}
           }
         }
       });
