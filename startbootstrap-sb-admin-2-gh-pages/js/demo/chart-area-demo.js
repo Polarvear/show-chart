@@ -81,7 +81,7 @@ fetch("API/Kospi/2017Kospi.json")
             backgroundColor: "rgba(78, 115, 223, 0.05)",
             borderColor: "rgba(78, 115, 223, 1)",
             pointRadius: 3,
-            pointBackgroundColor: "rgba(78, 115, 223, 1)",
+            pointBackgroundColor: "rgba(78, 223, 223, 115)",
             pointBorderColor: "rgba(78, 115, 223, 1)",
             pointHoverRadius: 3,
             pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
